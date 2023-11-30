@@ -7,7 +7,7 @@ function ApartmentList() {
   useEffect(() => {
     const fetchApartments = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/apartments'); 
+        const response = await axios.get('https://myserver-9ut2.onrender.com/apartments'); 
         setApartments(response.data);
       } catch (error) {
         console.error('There was an error fetching the apartments:', error);

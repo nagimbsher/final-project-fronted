@@ -21,7 +21,7 @@ function RentalForm({ onRentalSubmit }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:3001/renting', rentalData);
+      await axios.post('https://myserver-9ut2.onrender.com/renting', rentalData);
       onRentalSubmit(); 
       setSubmissionSuccess(true); 
       setTimeout(() => {

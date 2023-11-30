@@ -12,7 +12,7 @@ function SignUpForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('http://localhost:3001/auth/register', formData);
+          const response = await axios.post('https://myserver-9ut2.onrender.com/auth/register', formData);
           
           if (response.status === 200 || response.status === 201) {
               alert('Your account has been created successfully!');

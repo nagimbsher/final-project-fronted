@@ -1,109 +1,56 @@
-import {useState, useEffect} from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState } from 'react';
+import Navbar from './Navbar';
+import MapComponent from './MapComponent';
+import Airbnb from './Airbnb';
+import RentalForm from './RentalForm';
+import RentalList from './RentalList';
+import SignUpForm from './SignUpForm';
+import LoginForm from './LoginForm'; 
 
 function App() {
-  const [data, setData] = useState(null);
-  const [name, setName] = useState(null);
-  const [weather,setWeather] = useState({})
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const send = () => {
-   if(name){
-    fetch(`${BASE_URL}/api/${name}`)
-      .then((res) => {
-        console.log("res", res);
-        return res.json();
-      })
-      .then((data) => {
-        console.log("data", data);
-        setData(data.message);
-      })
-      .catch((e) => console.log(e));
-    }
-  }
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(()=>{
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=c707f05e6ee4c6a3af2dc3255a317531')
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      setWeather(data);
-    })
-    .catch(e=>{
-      console.log('eeeeee=>',e);
-    })
-  },[])
+  const handleLogin = (token) => {
+  
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    
+    setIsAuthenticated(false);
+  };
+
+  const handleRentalSubmit = () => {
+    
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "write your name..." : data}</p>
-        <input onChange={(e)=>setName(e.target.value)}/>
-        <button onClick={()=>send()}>Send</button>
-      </header>
+      <Navbar onLogout={handleLogout} />
+      <Airbnb />
+
+      {!isAuthenticated && (
+        <>
+          <LoginForm onLogin={handleLogin} />
+          <SignUpForm />
+        </>
+      )}
+      <>
+    
+      </>
+      {isAuthenticated && (
+        <>
+          <RentalForm onRentalSubmit={handleRentalSubmit} />
+          <RentalList />
+        </>
+      )}
+
+      <MapComponent />
     </div>
   );
 }
 
 export default App;
-
-
-
-
-// import React, { useState } from 'react';
-// import Navbar from './Navbar';
-// import MapComponent from './MapComponent';
-// import Airbnb from './Airbnb';
-// import RentalForm from './RentalForm';
-// import RentalList from './RentalList';
-// import SignUpForm from './SignUpForm';
-// import LoginForm from './LoginForm'; 
-
-// function App() {
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-//   const handleLogin = (token) => {
-  
-//     setIsAuthenticated(true);
-//   };
-
-//   const handleLogout = () => {
-    
-//     setIsAuthenticated(false);
-//   };
-
-//   const handleRentalSubmit = () => {
-    
-//   };
-
-//   return (
-//     <div className="App">
-//       <Navbar onLogout={handleLogout} />
-//       <Airbnb />
-
-//       {!isAuthenticated && (
-//         <>
-//           <LoginForm onLogin={handleLogin} />
-//           <SignUpForm />
-//         </>
-//       )}
-//       <>
-    
-//       </>
-//       {isAuthenticated && (
-//         <>
-//           <RentalForm onRentalSubmit={handleRentalSubmit} />
-//           <RentalList />
-//         </>
-//       )}
-
-//       <MapComponent />
-//     </div>
-//   );
-// }
-
-// export default App;
 
 
 

@@ -9,7 +9,7 @@ function RentalList() {
   useEffect(() => {
     const fetchRentals = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/renting');
+        const response = await axios.get('https://myserver-9ut2.onrender.com/renting');
         setRentals(response.data);
         setLoading(false);
       } catch (error) {

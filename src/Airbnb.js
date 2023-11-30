@@ -12,7 +12,7 @@ function Airbnb() {
   const [noMatch, setNoMatch] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3001/airbnb')
+    fetch('https://myserver-9ut2.onrender.com/airbnb')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
