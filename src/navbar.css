@@ -1,4 +1,35 @@
-.navbar{
+@media (max-width: 600px) {
+    .navButton {color: aqua;
+      /* Adjust button size and spacing for mobile */
+    }
+    .navbar {
+      color: #000;
+      /* Adjust navbar layout for mobile */
+    }
+    /* Add more styles for other elements */
+  }
+  
+
+  .navContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .navButton {
+    flex: 1 1 auto;
+    /* buttons will grow and shrink as needed */
+  }
+  
+  .navButton {
+    width: 100%; /* Full width on small screens */
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+  
+
+
+/* .navbar{
 
     height: 80px;
     background-color: #005480;
@@ -24,4 +55,4 @@
     cursor: pointer;
     color: #003580;
     
-}
+} */
